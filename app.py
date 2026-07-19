@@ -1,15 +1,26 @@
 import streamlit as st
+from database.helper import run_query
 
 st.set_page_config(
     page_title="MediQuery AI",
-    page_icon="🏥",
     layout="wide"
 )
 
 st.title("🏥 MediQuery AI")
 
-st.subheader("Multi-Agent Hospital Intelligence System")
+st.subheader("Patient Database")
 
-st.markdown("---")
+patients = run_query(
+    "SELECT * FROM patients LIMIT 20"
+)
 
-st.write("Welcome to MediQuery AI.")
+st.dataframe(patients)
+
+total = run_query(
+    "SELECT COUNT(*) AS Total FROM patients"
+)
+
+st.metric(
+    "Patients",
+    int(total.iloc[0]["Total"])
+)
