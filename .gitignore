@@ -1,19 +1,28 @@
-venv/
-
-__pycache__/
-
-*.pyc
-
+# Environment
 .env
+venv/
+env/
+.venv/
 
-*.db
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
 
-logs/
+# Generated data / runtime artifacts (regenerated automatically on first run)
+data/hospital.db
+vectorstore/*.bin
+vectorstore/*.pkl
+logs/*.log
+logs/*.jsonl
+docs/*.pdf
 
-vectorstore/
-
+# OS / editor
+.DS_Store
 .idea/
-
 .vscode/
 
-.DS_Store
+# Streamlit
+.streamlit/secrets.toml
